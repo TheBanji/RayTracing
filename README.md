@@ -1,5 +1,8 @@
 # RayTracing
  C++ implementation of the Ray Tracing in a Weekend series of books.
+
+ ## Requirements/ Dependencies
+ g++, make.
  
  ## Compile (UNIX/ Windows)
 ```bash
@@ -17,3 +20,6 @@ make all
 ```bash
 python ppm2png.py img/test.ppm
 ```
+
+## Example
+![Example of a rendered scene.](https://github.com/TheBanji/RayTracing/blob/main/img/raytracing2.png?raw=true)
