@@ -18,8 +18,8 @@
 
 int main(int argc, char * argv[]) {
     int width = 1920, height = 1080;
-    int nbRaysPerPixel  = 10;
-    int maxBouncePerRay = 10;
+    int nbRaysPerPixel  = 1000;
+    int maxBouncePerRay = 100;
 
     double ratio = (double)width/height;
     double coeff = 2.0;

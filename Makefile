@@ -5,9 +5,9 @@ CC       = g++
 CLIB     = -lm -lpthread
 CFLAGS   = -Wall -pedantic -O2
 
-SRC      = $(wildcard ./src/*.cpp)
-INC      = $(wildcard ./inc/*.hpp)
-OBJ      = $(SRC:./src/%.cpp=./obj/%.o)
+SRC      = $(wildcard src/*.cpp)
+INC      = $(wildcard inc/*.hpp)
+OBJ      = $(SRC:src/%.cpp=obj/%.o)
 
 INC_PATH  = -I"inc/"
 INC_PATH += -I"lib/stb/"
@@ -23,7 +23,7 @@ clean :
 $(BIN) : $(OBJ)
 	$(CC) $^ -o $@ $(CLIB)
 
-./obj/%.o : ./src/%.cpp $(INC)
+obj/%.o : src/%.cpp $(INC)
 	$(CC) -c $< -o $@ $(CFLAGS) $(INC_PATH)
 
 ################################################################
