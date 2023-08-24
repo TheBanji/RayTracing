@@ -2,6 +2,9 @@
 
 #include "imageTexture.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.hpp>
+
 #include <cstdio>
 #include <cstdlib>
 

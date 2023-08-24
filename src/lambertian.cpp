@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "lambertian.hpp"
-#include "sphere.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -9,9 +8,9 @@ Lambertian::Lambertian(Texture * texture) : _texture(texture) {} //const Color& 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool Lambertian::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Point& sphereCenter, double sphereRadius) const {
+bool Lambertian::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Sphere& sphere) const {
     double u, v;
-    Sphere::uv_projection((1/sphereRadius)*(intersectionPoint-sphereCenter), u, v);
+    Sphere::uv_projection((1/sphere.getRadius())*(intersectionPoint-sphere.getCenter()), u, v);
     Vector scatteredRayDir = normalVector + Sphere::random_point(0.5);
     scatteredRay           = Ray(intersectionPoint, scatteredRayDir);
     attenuation            = (*_texture)(u, v, intersectionPoint);//_albedo;

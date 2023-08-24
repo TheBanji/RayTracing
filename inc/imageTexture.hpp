@@ -2,9 +2,6 @@
 
 #include "texture.hpp"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.hpp>
-
 class ImageTexture : public Texture {
     public:
         ImageTexture(const std::string& imageName);

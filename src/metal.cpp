@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "metal.hpp"
-#include "sphere.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +12,7 @@ Metal::Metal(Texture * texture, double fuzz) : _texture(texture), _fuzz(fuzz) {/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool Metal::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Point& sphereCenter, double sphereRadius) const {
+bool Metal::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Sphere& sphere) const {
     scatteredRay = Ray(intersectionPoint, shotRay.getDir().reflect(normalVector) + Sphere::random_point(_fuzz));
     attenuation  = (*_texture)(0, 0, intersectionPoint);//_albedo;
     return (scatteredRay.getDir().dot(normalVector) > 0);

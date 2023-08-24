@@ -8,6 +8,7 @@
 // Textures
 #include "colorTexture.hpp"
 #include "checkerTexture.hpp"
+#include "imageTexture.hpp"
 // Objects
 #include "sphere.hpp"
 // Scene
@@ -16,7 +17,7 @@
 #include "random.hpp"
 
 int main(int argc, char * argv[]) {
-    int width = 400, height = 400;
+    int width = 1920, height = 1080;
     int nbRaysPerPixel  = 10;
     int maxBouncePerRay = 10;
 
@@ -26,7 +27,7 @@ int main(int argc, char * argv[]) {
     seed_random(std::time(nullptr));
     PPM img(width, height);
 
-    Texture * t1 = new ColorTexture(Color(0.8, 0.3, 0.3));
+    Texture * t1 = new ImageTexture("image_texture.jpg"); // new ColorTexture(Color(0.8, 0.3, 0.3));
     Texture * t2 = new ColorTexture(Color(0.8, 0.6, 0.2));
     Texture * t3 = new ColorTexture(Color(0.8, 0.8, 0.8));
     Texture * t4 = new CheckerTexture(new ColorTexture(Color(0.5, 0.2, 0.8)), new ColorTexture(Color(0.75, 0.1, 0.625)));

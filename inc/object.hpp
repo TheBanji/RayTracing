@@ -14,7 +14,7 @@ class Object {
         virtual double intersect(const Ray& ray) const = 0;
         virtual Vector normal(const Point& point) const = 0;
 
-        virtual Color getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const;
+        virtual Color getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const = 0;
 
     protected:
         Material * _material;

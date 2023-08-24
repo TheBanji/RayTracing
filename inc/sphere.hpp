@@ -11,6 +11,11 @@ class Sphere : public Object {
         double intersect(const Ray& ray) const;
         Vector normal(const Point& point) const;
 
+        Color getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const;
+
+        Point getCenter() const;
+        double getRadius() const;
+
         friend std::ostream& operator<<(std::ostream& stream, const Sphere& sphere);
 
         static Point random_point(double radius = 1.0);

@@ -31,6 +31,26 @@ Vector Sphere::normal(const Point& point) const {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Color Sphere::getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const {
+    Color attenuation;
+    if(_material != nullptr && _material->scatter(ray, intersectionPoint, this->normal(intersectionPoint), scatteredRay, attenuation, *this)) {
+        return attenuation;
+    }
+    return Color::Black;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Point Sphere::getCenter() const {
+    return _center;
+}
+
+double Sphere::getRadius() const {
+    return _radius;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Point Sphere::random_point(double radius) {
     double theta = 2 * M_PI * uniform_random();
     double phi   = 2 * M_PI * uniform_random();
