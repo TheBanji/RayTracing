@@ -41,9 +41,10 @@ Color ImageTexture::operator()(double u, double v, const Point& intersectionPoin
     if(j > _height-1) {
         j = _height-1;
     }
-    return Color((double)_image[3*i + 3*_width*j]/255.0,
-                 (double)_image[3*i + 3*_width*j + 1]/255.0,
-                 (double)_image[3*i + 3*_width*j + 2]/255.0);
+    int index = i + _width*j;
+    return Color((double)_image[3*index]/255.0,
+                 (double)_image[3*index + 1]/255.0,
+                 (double)_image[3*index + 2]/255.0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

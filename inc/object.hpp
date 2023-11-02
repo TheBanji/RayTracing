@@ -14,8 +14,14 @@ class Object {
         virtual double intersect(const Ray& ray) const = 0;
         virtual Vector normal(const Point& point) const = 0;
 
+        virtual void uv_projection(const Point& point, double& u, double& v) const = 0;
+
         virtual Color getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const = 0;
 
+        friend std::ostream& operator<<(std::ostream& stream, const Object& object);
+
     protected:
+        virtual std::ostream& print(std::ostream& stream) const = 0;
+
         Material * _material;
 };

@@ -22,4 +22,4 @@ python ppm2png.py img/test.ppm
 ```
 
 ## Example
-![Example of a rendered scene.](https://github.com/TheBanji/RayTracing/blob/main/img/raytracing3.png?raw=true)
+![Example of a rendered scene.](https://github.com/TheBanji/RayTracing/blob/main/img/raytracing4.png?raw=true)

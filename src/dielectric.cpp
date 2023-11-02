@@ -10,7 +10,7 @@ Dielectric::Dielectric(double n) : _n(n) {}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool Dielectric::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Sphere& sphere) const {
+bool Dielectric::scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Object& Object) const {
     attenuation            = Color::White;
     Vector shotRayDir      = shotRay.getDir();
     Vector reflectedVector = shotRayDir.reflect(normalVector);

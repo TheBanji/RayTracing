@@ -16,12 +16,14 @@ class Sphere : public Object {
         Point getCenter() const;
         double getRadius() const;
 
-        friend std::ostream& operator<<(std::ostream& stream, const Sphere& sphere);
+        //friend std::ostream& operator<<(std::ostream& stream, const Sphere& sphere);
 
         static Point random_point(double radius = 1.0);
-        static void uv_projection(const Point& point, double& u, double& v);
+        void uv_projection(const Point& point, double& u, double& v) const;
         
     private:
+        std::ostream& print(std::ostream& stream) const;
+
         Point _center;
         double _radius;
 };

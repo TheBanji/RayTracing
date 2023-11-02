@@ -11,6 +11,7 @@
 #include "imageTexture.hpp"
 // Objects
 #include "sphere.hpp"
+#include "triangle.hpp"
 // Scene
 #include "scene.hpp"
 // Utilities
@@ -43,7 +44,13 @@ int main(int argc, char * argv[]) {
     scene.addObject(new Sphere(new Dielectric(2.0),  Point(0.75, 0.25, -4.0),   0.25));
     scene.addObject(new Sphere(new Dielectric(1.25), Point(-1.5, 0.0, -4.0),    0.25));
     scene.addObject(new Sphere(new Metal(t4, 0.1),   Point(0.0, -100.0, -4.0),  99.0));
-    
+
+    /*Point A(-1.5,0,-4.5), B(1.5,0,-6), C(1,-1.5,-4.5), D(1,1.5,-4.5);
+    scene.addObject(new Triangle(new Metal(t4, 0.1), A, B, C));
+    scene.addObject(new Triangle(new Metal(t4, 0.1), A, B, D));
+    scene.addObject(new Triangle(new Metal(t4, 0.1), B, C, D));
+    scene.addObject(new Triangle(new Metal(t4, 0.1), A, C, D));*/
+
     scene.render(img, nbRaysPerPixel, maxBouncePerRay);
     img.save("img/test.ppm", false);
     

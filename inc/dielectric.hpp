@@ -7,7 +7,7 @@ class Dielectric : public Material {
     public:
         Dielectric(double n);
 
-        virtual bool scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Sphere& sphere) const;
+        virtual bool scatter(const Ray& shotRay, const Point& intersectionPoint, const Vector& normalVector, Ray& scatteredRay, Color& attenuation, const Object& object) const;
 
     private:
         double _n;

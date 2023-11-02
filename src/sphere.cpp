@@ -31,6 +31,16 @@ Vector Sphere::normal(const Point& point) const {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void Sphere::uv_projection(const Point& point, double& u, double& v) const {
+    Point p = (1/_radius)*(point-_center);
+    double phi   = std::atan2(p.getZ(), p.getX());
+    double theta = std::asin(p.getY());
+    u            = 1 + (phi-M_PI)/(2*M_PI);
+    v            = (theta+M_PI/2)/M_PI;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Color Sphere::getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const {
     Color attenuation;
     if(_material != nullptr && _material->scatter(ray, intersectionPoint, this->normal(intersectionPoint), scatteredRay, attenuation, *this)) {
@@ -57,18 +67,11 @@ Point Sphere::random_point(double radius) {
     return radius * Point(std::cos(phi)*std::cos(theta), std::cos(phi)*std::sin(theta), std::sin(phi));
 }
 
-void Sphere::uv_projection(const Point& point, double& u, double& v) {
-    double phi   = std::atan2(point.getZ(), point.getX());
-    double theta = std::asin(point.getY());
-    u            = 1 - (phi+M_PI)/(2*M_PI);
-    v            = (theta+M_PI/2)/M_PI;
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-std::ostream& operator<<(std::ostream& stream, const Sphere& sphere) {
-    stream << "Center : " << sphere._center << std::endl;
-    stream << "Radius : " << sphere._radius << std::endl;
+std::ostream& Sphere::print(std::ostream& stream) const{
+    stream << "Center : " << _center << std::endl;
+    stream << "Radius : " << _radius << std::endl;
     return stream;
 }
 
