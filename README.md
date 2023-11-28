@@ -2,7 +2,7 @@
  C++ implementation of the Ray Tracing in a Weekend series of books.
 
  ## Requirements/ Dependencies
- g++, make.
+ g++, make and Python with Numpy, Matplotlib modules.
  
  ## Compile (UNIX/ Windows)
 ```bash
