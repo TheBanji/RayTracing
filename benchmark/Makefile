@@ -1,16 +1,13 @@
 ################################################################
 
-BIN      = main
+BIN      = random
 CC       = g++
 CLIB     = -lm -lpthread
 CFLAGS   = -Wall -pedantic -O3
 
-SRC      = $(wildcard src/*.cpp)
-INC      = $(wildcard inc/*.hpp)
-OBJ      = $(SRC:src/%.cpp=obj/%.o)
-
-INC_PATH  = -I"inc/"
-INC_PATH += -I"lib/stb/"
+SRC      = $(wildcard *.cpp)
+INC      = $(wildcard *.hpp)
+OBJ      = $(SRC:.cpp=.o)
 
 all : $(BIN)
 
@@ -23,7 +20,7 @@ clean :
 $(BIN) : $(OBJ)
 	$(CC) $^ -o $@ $(CLIB)
 
-obj/%.o : src/%.cpp $(INC)
-	$(CC) -c $< -o $@ $(CFLAGS) $(INC_PATH)
+%.o : %.cpp $(INC)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 ################################################################

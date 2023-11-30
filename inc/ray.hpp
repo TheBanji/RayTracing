@@ -10,6 +10,8 @@ class Ray {
         Point getOrigin() const;
         Vector getDir() const;
 
+        void setDir(const Vector& dir);
+
         Point operator()(double t) const;
         
         friend std::ostream& operator<<(std::ostream& stream, const Ray& ray);

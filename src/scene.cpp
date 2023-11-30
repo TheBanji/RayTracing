@@ -29,7 +29,7 @@ Scene::~Scene() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define NB_THREADS 16 // Splitting the rendering onto NB_THREADS - threads.
+#define NB_THREADS 4 // Splitting the rendering onto NB_THREADS - threads.
 
 typedef struct {
     const Scene* scene;
@@ -69,12 +69,13 @@ void Scene::render(PPM& image, int nbSamplesAliasing, int recursionLimit) const 
 void * render_chunk(void * args) {
     threadData_t* data = (threadData_t*)args;
     int i, j, s;
-    Ray ray;
+    Vector screenOrigin(data->scene->_bottom_left_corner - data->scene->_origin);
+    Ray ray(data->scene->_origin, screenOrigin);
     int widthImage = data->image->getWidth(), heightImage = data->image->getHeight();
     for(j = data->yStart; j < data->yEnd; j++) {
         for(i = data->xStart; i < data->xEnd; i++) {
             for(s = 0; s < data->nbSamplesAliasing; s++) {
-                ray = Ray(data->scene->_origin, data->scene->_bottom_left_corner + data->scene->_screenWidth*((double)(i+uniform_random())/widthImage)+data->scene->_screenHeight*((double)(j+uniform_random())/heightImage) - data->scene->_origin);
+                ray.setDir(screenOrigin + data->scene->_screenWidth*((double)(i+uniform_random())/widthImage)+data->scene->_screenHeight*((double)(j+uniform_random())/heightImage));
                 (*data->image)[heightImage-1-j][i] += data->scene->Scene::cast_ray(ray, data->recursionLimit);
             }
             DEBUG(fprintf(stdout, "Pixel (before) %lf %lf %lf\n", (*data->image)[heightImage-1-j][i].getR(), (*data->image)[heightImage1-j][i].getG(), (*data->image)data->[yEnd-1-j][i].getB());)

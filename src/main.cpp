@@ -18,9 +18,9 @@
 #include "random.hpp"
 
 int main(int argc, char * argv[]) {
-    int width = 1920, height = 1080;
-    int nbRaysPerPixel  = 1000;
-    int maxBouncePerRay = 100;
+    int width = 640, height = 480;
+    int nbRaysPerPixel  = 100;
+    int maxBouncePerRay = 10;
 
     double ratio = (double)width/height;
     double coeff = 2.0;
@@ -33,6 +33,8 @@ int main(int argc, char * argv[]) {
     Texture * t3 = new ColorTexture(Color(0.8, 0.8, 0.8));
     Texture * t4 = new CheckerTexture(new ColorTexture(Color(0.5, 0.2, 0.8)), new ColorTexture(Color(0.75, 0.1, 0.625)));
 
+    Point A(-0.5,0,-3.5), B(0.5,0,-5), C(0.5,-0.5,-3.5), D(0.5,0.5,-3.5);
+
     Scene scene(Point(0.0, 0.0, 0.0), Point(0.0, 0.0, -2.5), Vector(coeff * ratio, 0.0, 0.0), Vector(0.0, coeff, 0.0));
     scene.addObject(new Sphere(new Lambertian(t1),   Point(-0.5, 0.0, -6.0),    1.0));
     scene.addObject(new Sphere(new Metal(t2, 0.0),   Point(1.5, 0.0, -6.0),     1.0));
@@ -44,12 +46,11 @@ int main(int argc, char * argv[]) {
     scene.addObject(new Sphere(new Dielectric(2.0),  Point(0.75, 0.25, -4.0),   0.25));
     scene.addObject(new Sphere(new Dielectric(1.25), Point(-1.5, 0.0, -4.0),    0.25));
     scene.addObject(new Sphere(new Metal(t4, 0.1),   Point(0.0, -100.0, -4.0),  99.0));
-
-    /*Point A(-1.5,0,-4.5), B(1.5,0,-6), C(1,-1.5,-4.5), D(1,1.5,-4.5);
-    scene.addObject(new Triangle(new Metal(t4, 0.1), A, B, C));
-    scene.addObject(new Triangle(new Metal(t4, 0.1), A, B, D));
-    scene.addObject(new Triangle(new Metal(t4, 0.1), B, C, D));
-    scene.addObject(new Triangle(new Metal(t4, 0.1), A, C, D));*/
+    scene.addObject(new Triangle(new Dielectric(1.5)/*Metal(t4, 0.1)*/, A, B, C));
+    scene.addObject(new Triangle(new Dielectric(1.5)/*Metal(t4, 0.1)*/, A, B, D));
+    scene.addObject(new Triangle(new Dielectric(1.5)/*Metal(t4, 0.1)*/, B, C, D));
+    scene.addObject(new Triangle(new Dielectric(1.5)/*Metal(t4, 0.1)*/, A, C, D));
+    scene.addObject(new Sphere(new Metal(t4, 0.1),   Point(0.0, -100.0, -4.0),  99.0));
 
     scene.render(img, nbRaysPerPixel, maxBouncePerRay);
     img.save("img/test.ppm", false);

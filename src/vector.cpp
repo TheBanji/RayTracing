@@ -28,7 +28,7 @@ Vector& Vector::normalize() {
 
 
 double Vector::distance(const Point& point) const {
-    return Vector(*this - point).norm();
+    return (*this - point).norm();
 }
 
 
