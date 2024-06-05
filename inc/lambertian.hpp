@@ -1,3 +1,7 @@
+/*
+    Lambertian/diffuse surface modelling.
+*/
+
 #pragma once
 
 #include "material.hpp"

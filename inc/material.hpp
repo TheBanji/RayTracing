@@ -1,3 +1,8 @@
+/*
+    Base class for materials modelling
+    using their light interactions.
+*/
+
 #pragma once
 
 #include "color.hpp"

@@ -1,3 +1,26 @@
+/*
+    Ray-tracing project main file.
+    --
+    Important notes:
+
+    Image rendering is multi-threaded. Default number
+    of threads (NB_THREADS) is 16. This parameter can
+    be adjusted as per your needs from (src/scene.cpp),
+    but it should be a power of 4, namely 1, 4, 16, 64,
+    256, ...
+
+    Rendering parameters such has, final image name
+    (default img/test.ppm), image width/height, number
+    of rays per pixel and maximum number of bounces per
+    ray can be quickly configured from main function's
+    prologue/epilogue. Obviously, the higher the image
+    resolution and the number of generated rays are,
+    the longer the rendering will take.
+
+    By default, the scene renders a plane with a bunch
+    of spheres with various textures and a glass pyramid.
+*/
+
 #include <iostream>
 #include <ctime>
 

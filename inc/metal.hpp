@@ -1,3 +1,8 @@
+/*
+    Metal material modelled using its light interactions properties.
+*/
+
+
 #pragma once
 
 #include "material.hpp"

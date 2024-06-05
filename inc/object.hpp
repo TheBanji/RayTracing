@@ -1,3 +1,7 @@
+/*
+    3-dimensional objects base class.
+*/
+
 #pragma once
 
 #include "ray.hpp"

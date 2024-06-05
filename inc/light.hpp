@@ -1,3 +1,7 @@
+/*
+    Punctual light source model.
+*/
+
 #pragma once
 
 #include "vector.hpp"

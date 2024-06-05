@@ -1,3 +1,9 @@
+/*
+    Generic class to monitor the execution
+    time of a function implemented within
+    a derived class of TestUnit.
+*/
+
 #pragma once
 
 #include <iostream>
@@ -9,7 +15,8 @@ class TestUnit {
     public:
         TestUnit(T* args) : _args(args) {}
         
-        virtual void operator()() const = 0;
+        virtual void init() {}
+        virtual void operator()() = 0;
 
     protected:
         T* _args;
@@ -32,10 +39,11 @@ class Benchmark {
         }
 
         template<typename T>
-        void operator()(const TestUnit<T>& dut) {
+        void operator()(TestUnit<T>& dut) {
             long i;
             long start, total = 0;
             for(i = 0; i < _iterations; i++) {
+                dut.init();
                 start = get_time();
                 dut();
                 total += (get_time()-start);

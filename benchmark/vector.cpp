@@ -1,19 +1,17 @@
 /*
     Benchmark instance monitoring
-    the execution time of uniform_random.
+    the execution time of some Vector
+    (vector.hpp) class' functions.
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
-
 #include "benchmark.hpp"
+#include "vector.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#define MAX_INT 100000000000000
 
 void seed_random(long long seed) {
     std::srand(seed);
@@ -29,32 +27,43 @@ double uniform_random() {
     #endif
 }
 
-class RandomWrapper : public TestUnit<void> {
+typedef struct {
+    Vector u;
+    Vector v;
+    Vector w;
+} Tuple;
+
+class VectorWrapper : public TestUnit<Tuple> {
     public:
-        RandomWrapper() : TestUnit<void>(NULL) {}
+        VectorWrapper(Tuple* tuple) : TestUnit<Tuple>(tuple) {}
 
         void init() {
-            seed_random(std::time(nullptr));
+            _args->u = Vector(uniform_random(), uniform_random(), uniform_random());
+            _args->v = Vector(uniform_random(), uniform_random(), uniform_random());
         }
 
         void operator()() {
-            uniform_random();
+            //for(int i = 0; i < 1; i++) {
+                _args->w = _args->u ^ _args->v;
+            //}
         }
-
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[]) {
     int N;
-    
-    if(argc != 2) return EXIT_FAILURE;
+
+    if(argc != 2) std::exit(EXIT_FAILURE);
     N = atoi(argv[1]);
-    
-    RandomWrapper dut;
+
+    seed_random(std::time(nullptr));
+
+    Tuple tuple;
+    VectorWrapper dut(&tuple);
     Benchmark bench(N);
 
     bench(dut);
-    
+
     return 0;
 }

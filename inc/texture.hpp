@@ -1,3 +1,7 @@
+/*
+    Materials' texture base class.
+*/
+
 #pragma once
 
 #include "color.hpp"

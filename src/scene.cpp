@@ -1,3 +1,14 @@
+/*
+    Scene class implementation (Main rendering logic).
+    --
+    Important notes:
+
+    Default configuration splits the rendering task
+    onto NB_THREADS = 16 threads. This parameter can
+    be adjusted as per your needs, but it should be
+    a power of 4, namely 1, 4, 16, 64, 256, ...
+*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <pthread.h>
@@ -29,7 +40,7 @@ Scene::~Scene() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define NB_THREADS 4 // Splitting the rendering onto NB_THREADS - threads.
+#define NB_THREADS 16 // Splitting the rendering onto NB_THREADS threads.
 
 typedef struct {
     const Scene* scene;

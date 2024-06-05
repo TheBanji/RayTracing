@@ -1,3 +1,7 @@
+/*
+    Sphere model in a 3-dimensional space.
+*/
+
 #pragma once
 
 #include "object.hpp"

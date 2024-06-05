@@ -1,3 +1,8 @@
+/*
+    Skybox defining the scene's surrounding
+    environment colour.
+*/
+
 #pragma once
 
 #include "color.hpp"

@@ -1,3 +1,9 @@
+/*
+    Texture modelling a checker-board-like
+    pattern of texture that can be applied
+    onto a material.
+*/
+
 #pragma once
 
 #include "colorTexture.hpp"

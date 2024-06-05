@@ -1,3 +1,7 @@
+/*
+	RNG functions wrapper.
+*/
+
 #pragma once
 
 #include <cstdlib>

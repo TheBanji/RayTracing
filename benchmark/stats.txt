@@ -1,0 +1,10 @@
+Total execution time (s), Execution time without image saving (s), Image saving time (s)
+18.534,                   18.172,                                  0.362
+19.054,                   17.716,                                  1.338
+17.903,                   17.877,                                  0.026
+18.213,                   17.988,                                  0.225
+
+
+Average total execution time (s), Average execution time without image saving (s), Image saving time (s)
+18.426,                           17.93825,                                        0.48775
+

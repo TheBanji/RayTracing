@@ -1,3 +1,8 @@
+/*
+    Color representation as a set of Red, Green and Blue (RGB) coefficients.
+    Every coefficient is between 0 and 1.
+*/
+
 #pragma once
 
 #include <iostream>

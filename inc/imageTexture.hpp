@@ -1,3 +1,8 @@
+/*
+    Texture that allows the mapping of an image
+    onto an object.
+*/
+
 #pragma once
 
 #include "texture.hpp"

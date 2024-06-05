@@ -1,3 +1,7 @@
+/*
+    Triangle model in a 3-dimensional space.
+*/
+
 #pragma once
 
 #include "object.hpp"
@@ -11,7 +15,7 @@ class Triangle : public Object {
         double intersect(const Ray& ray) const;
         Vector normal(const Point& point) const;
 
-        void uv_projection(const Point& point, double& u, double& v) const;
+        void uv_projection(const Point& point, double& u, double& v) const; // Needs to be implemented.
 
         Color getColor(const Ray& ray, const Point& intersectionPoint, Ray& scatteredRay) const;
         

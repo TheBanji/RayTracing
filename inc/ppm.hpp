@@ -1,3 +1,7 @@
+/*
+    PPM file format implementation.
+*/
+
 #pragma once
 
 #include <string>

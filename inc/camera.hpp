@@ -1,3 +1,7 @@
+/*
+    Camera from which the scene should be rendered.
+*/
+
 #pragma once
 
 #include "vector.hpp"

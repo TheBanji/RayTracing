@@ -1,3 +1,7 @@
+/*
+    Light-ray modelled as semi-line.
+*/
+
 #pragma once
 
 #include "vector.hpp"

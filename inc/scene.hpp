@@ -1,3 +1,10 @@
+/*
+    Scene class performing the rendering of
+    3-dimensional objects using ray-tracing.
+    Contains all the objects and some
+    information such as the scene geometry.
+*/
+
 #pragma once
 
 #include <vector>

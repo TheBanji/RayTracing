@@ -1,3 +1,8 @@
+/*
+    Texture that allows the mapping of
+    a color onto a material.
+*/
+
 #pragma once
 
 #include "texture.hpp"

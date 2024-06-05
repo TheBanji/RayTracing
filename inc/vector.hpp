@@ -1,3 +1,9 @@
+/*
+    3-dimensions vectors implementation,
+    including reflection and refraction
+    transformations.
+*/
+
 #pragma once
 
 #include <iostream>
